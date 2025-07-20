@@ -1,0 +1,8 @@
+apiVersion: cluster.open-cluster-management.io/v1
+kind: ManagedCluster
+metadata:
+  name: onprem-rancher-np
+  labels:
+    name: onprem-rancher-np
+spec:
+  hubAcceptsClient: true
