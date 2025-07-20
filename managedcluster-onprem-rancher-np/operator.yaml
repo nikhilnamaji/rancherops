@@ -1,0 +1,34 @@
+# clusters/onprem-rancher-np/klusterlet/operator.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registration-operator
+  namespace: open-cluster-management-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: registration-operator
+  template:
+    metadata:
+      labels:
+        name: registration-operator
+    spec:
+      serviceAccountName: registration-operator-sa
+      containers:
+        - name: registration-operator
+          image: quay.io/open-cluster-management/registration-operator:latest
+          imagePullPolicy: Always
+          command:
+            - registration-operator
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: open-cluster-management-agent
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: registration-operator-sa
+  namespace: open-cluster-management-agent
