@@ -2,21 +2,19 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: klusterlet
-  namespace: open-cluster-management-agent
+  namespace: flux-system
 spec:
-  releaseName: klusterlet
+  targetNamespace: open-cluster-management-agent   # ✅ Correct placement
+  install:
+    createNamespace: true                          # ✅ Valid field
   interval: 1m
   chart:
     spec:
       chart: klusterlet
-      version: "0.15.2"  # latest as of mid-2025
+      version: "0.15.2"
       sourceRef:
         kind: HelmRepository
         name: ocm
         namespace: flux-system
-  install:
-    createNamespace: true
-    namespace: open-cluster-management-agent
   values:
     clusterName: onprem-rancher-np
-    # add extra values if needed

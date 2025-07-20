@@ -4,5 +4,5 @@ metadata:
   name: ocm
   namespace: flux-system
 spec:
-  url: https://open-cluster-management.github.io/ocm-chart
+  url: https://open-cluster-management.io/helm-charts
   interval: 1h0m
