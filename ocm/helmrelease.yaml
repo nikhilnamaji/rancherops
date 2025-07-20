@@ -1,0 +1,23 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: cluster-manager
+  namespace: flux-system
+spec:
+  releaseName: cluster-manager
+  targetNamespace: open-cluster-management
+  install:
+    createNamespace: true
+  interval: 10m
+  chart:
+    spec:
+      chart: cluster-manager
+      version: "0.15.2"    # Latest chart version as of mid‑2025
+      sourceRef:
+        kind: HelmRepository
+        name: ocm
+        namespace: flux-system
+      interval: 1h
+  values:
+    global:
+      imagePullPolicy: IfNotPresent
