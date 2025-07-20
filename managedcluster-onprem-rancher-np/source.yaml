@@ -1,10 +1,8 @@
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: GitRepository
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
 metadata:
-  name: flux-system
+  name: ocm
   namespace: flux-system
 spec:
-  interval: 1m
-  url: https://github.com/nikhilnamaji/rancherops
-  ref:
-    branch: main
+  url: https://open-cluster-management.github.io/ocm-chart
+  interval: 1h0m
