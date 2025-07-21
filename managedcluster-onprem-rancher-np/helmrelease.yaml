@@ -4,10 +4,11 @@ metadata:
   name: klusterlet
   namespace: flux-system
 spec:
+  interval: 1m
+  releaseName: open-cluster-management-agent-klusterlet
   targetNamespace: open-cluster-management-agent
   install:
     createNamespace: true
-  interval: 1m
   chart:
     spec:
       chart: klusterlet
@@ -18,5 +19,7 @@ spec:
         namespace: flux-system
   values:
     clusterName: onprem-rancher-np
-    registrationImage: quay.io/open-cluster-management/registration:2.9.0
-    workImage: quay.io/open-cluster-management/work:2.9.0
+    registration:
+      imagePullSpec: quay.io/open-cluster-management/registration:latest
+    work:
+      imagePullSpec: quay.io/open-cluster-management/work:latest
