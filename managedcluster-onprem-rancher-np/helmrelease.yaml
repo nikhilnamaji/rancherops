@@ -18,9 +18,5 @@ spec:
         namespace: flux-system
   values:
     clusterName: onprem-rancher-np
-    registrationImage:
-      repository: quay.io/open-cluster-management/registration
-      tag: v0.15.2
-    workImage:
-      repository: quay.io/open-cluster-management/work
-      tag: v0.15.2
+    registrationImage: quay.io/open-cluster-management/registration:2.9.0
+    workImage: quay.io/open-cluster-management/work:2.9.0
