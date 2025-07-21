@@ -4,10 +4,10 @@ metadata:
   name: klusterlet
   namespace: flux-system
 spec:
-  interval: 1m
+  targetNamespace: open-cluster-management-agent
   install:
     createNamespace: true
-  targetNamespace: open-cluster-management-agent
+  interval: 1m
   chart:
     spec:
       chart: klusterlet
@@ -18,6 +18,8 @@ spec:
         namespace: flux-system
   values:
     clusterName: onprem-rancher-np
-    deployAgent: true
-    registrationImagePullSpec: quay.io/open-cluster-management/registration:latest
-    workImagePullSpec: quay.io/open-cluster-management/work:latest
+    deployAgent: true                          # ✅ Required to deploy agents
+    registrationImage:
+      pullPolicy: IfNotPresent
+    workImage:
+      pullPolicy: IfNotPresent
