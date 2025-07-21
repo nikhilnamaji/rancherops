@@ -4,3 +4,4 @@ resources:
   - source.yaml
   - helmrelease.yaml
   - managedcluster.yaml
+  - bootstrap-token.yaml
