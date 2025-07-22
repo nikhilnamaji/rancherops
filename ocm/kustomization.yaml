@@ -6,3 +6,4 @@ resources:
   - managedcluster.yaml
   - bootstrap-token.yaml
   - sa-token.yaml
+  - ocm-cluster-role.yaml
