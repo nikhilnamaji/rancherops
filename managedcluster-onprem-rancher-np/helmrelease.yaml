@@ -4,22 +4,17 @@ metadata:
   name: klusterlet
   namespace: open-cluster-management-agent
 spec:
-  interval: 5m
+  releaseName: klusterlet
   chart:
     spec:
       chart: klusterlet
+      version: 0.7.0
       sourceRef:
         kind: HelmRepository
-        name: ocm
+        name: ocm-repo
         namespace: flux-system
-      version: "*"
+  interval: 5m
   values:
     clusterName: onprem-rancher-np
-    hubKubeconfigSecret: bootstrap-hub-kubeconfig
-  install:
-    createNamespace: true
-    remediation:
-      retries: 3
-  upgrade:
-    remediation:
-      retries: 3
+    hubKubeAPIServer: https://127.0.0.1:51015
+    bootstrapToken: "eyJhbGciOiJSUzI1NiIsImtpZCI6InVUMmh0b2cxako2ck82dndVM0F3Zm0teDEyQUVWNG1wdUNZRUNJLXlhUkEifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNzUzMTg3NzYwLCJpYXQiOjE3NTMxODQxNjAsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwianRpIjoiMjkwZWM2OTktNjRlMS00NmRiLTgzOGItZmMwNDE2NWEzYzdiIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJvcGVuLWNsdXN0ZXItbWFuYWdlbWVudCIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJhZ2VudC1yZWdpc3RyYXRpb24tYm9vdHN0cmFwIiwidWlkIjoiMWE0NmY4NWEtNmNlYy00NGI3LThjMWMtOWI1YWZkYjI5YWYzIn19LCJuYmYiOjE3NTMxODQxNjAsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpvcGVuLWNsdXN0ZXItbWFuYWdlbWVudDphZ2VudC1yZWdpc3RyYXRpb24tYm9vdHN0cmFwIn0.oJXc9PPgBglBRahTKjHQSA76vVAYjQd-PBSIfmKnJpdz8kcYWYnRnVtfaro_31bAUav9HZA97LLIlTSzyw5D1RBnh-faZJjmLcKbD4QTOsD4on3epI5esNSnEICOS2gwCG1XQIjWnPhW_cUm1xOFoeSPTHjbXwnr6NWs4gAe-ynFvI2m8nyvctOMMPGZh2j0su3VOgYED2JESczY0u4TSv46OKOdYqXkapih7GLLYM6XvwlYQWB0dIgwO2NumkR2HKnmnYbtM34YRY1K5RKXZRCCQHAQ8E8a8q4HgYklxkymEQChNXGlTfnltNdi8PJrbmDv-Q8Y4sWze73KbI_BDA --hub-apiserver https://127.0.0.1:51015 --cluster-name onprem-rancher-np"
