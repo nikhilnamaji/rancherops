@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: agent-registration-bootstrap-token
+  namespace: open-cluster-management
+  annotations:
+    kubernetes.io/service-account.name: agent-registration-bootstrap
+type: kubernetes.io/service-account-token

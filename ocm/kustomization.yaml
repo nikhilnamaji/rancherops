@@ -5,3 +5,4 @@ resources:
   - helmrelease.yaml
   - managedcluster.yaml
   - bootstrap-token.yaml
+  - sa-token.yaml
