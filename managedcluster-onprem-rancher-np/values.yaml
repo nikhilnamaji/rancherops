@@ -1,0 +1,3 @@
+apiServer: ${HUB_API_SERVER}
+token: ${BOOTSTRAP_TOKEN}
+clusterName: onprem-rancher-np

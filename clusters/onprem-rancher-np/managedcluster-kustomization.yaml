@@ -12,3 +12,5 @@ spec:
     name: flux-system
   timeout: 5m
   wait: true
+  dependsOn:
+    - name: onprem-rancher-prod-hub-bootstrap
