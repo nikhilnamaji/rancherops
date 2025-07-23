@@ -4,19 +4,16 @@ metadata:
   name: klusterlet
   namespace: open-cluster-management-agent
 spec:
-  releaseName: klusterlet
+  interval: 5m
   chart:
     spec:
       chart: klusterlet
+      version: "1.0.0"
       sourceRef:
         kind: HelmRepository
-        name: ocm
+        name: clusteradm-charts
         namespace: flux-system
-  interval: 5m
-  values:
-    clusterName: onprem-rancher-np
-    hubKubeAPIServer: https://127.0.0.1:51015
-    bootstrapToken: "eyJhbGciOiJSUzI1NiIsImtpZCI6InVUMmh0b2cxako2ck82dndVM0F3Zm0teDEyQUVWNG1wdUNZRUNJLXlhUkEifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNzUzMTk3MjY0LCJpYXQiOjE3NTMxOTM2NjQsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwianRpIjoiOGExY2ZkZTQtZWJkNy00MTNkLTk4YjQtM2NhMDNiZGRkOTEzIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJvcGVuLWNsdXN0ZXItbWFuYWdlbWVudCIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJhZ2VudC1yZWdpc3RyYXRpb24tYm9vdHN0cmFwIiwidWlkIjoiMWE0NmY4NWEtNmNlYy00NGI3LThjMWMtOWI1YWZkYjI5YWYzIn19LCJuYmYiOjE3NTMxOTM2NjQsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpvcGVuLWNsdXN0ZXItbWFuYWdlbWVudDphZ2VudC1yZWdpc3RyYXRpb24tYm9vdHN0cmFwIn0.If2NHDEObbwwk9C8KgX9FzuOhtPxrPs2NGn8UApuVSKkMoAh-TwlCVncG75kPHmcyXTFLp42IfRpabZ9CLBfC4za0Gg5KTYZySW22Rp8a_OJ1rwoha-dx_5Geev_vc45TXQcltnl99XZS_7l7eGqSdVnxzts43YcHUCpL7W6BGFq2ys1A30incHfdxjWlagXPvOawzg4Tu2MqE8Xfy6t9Dli39mGKE4Sb3ouLyKqenfExkK0_V_GoKq9EJHcSblojVJzc9mA_m-f6eFtFTKDispXbl-oBJEkl1QL_Aob1bqKVGa_ogIHw8Sp5i0ssH3ks_mDAZwG6To2IhsvXqpvFQ"
-    images:
-      overrides:
-        registrationImage: quay.io/open-cluster-management/registration:v1.0.0
+  valuesFrom:
+    - kind: Secret
+      name: klusterlet-values
+      valuesKey: values.yaml
