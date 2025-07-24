@@ -5,4 +5,4 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
-  url: https://open-cluster-management.github.io/helm-charts
+  url: https://open-cluster-management.io/helm-charts
