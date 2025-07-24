@@ -6,6 +6,5 @@ resources:
   - bootstrap-hub-kubeconfig-secret.yaml
   - klusterlet-crd.yaml
   - operator.yaml
-  - bootstrap-hub-kubeconfig-secret.yaml
   - klusterlet.yaml
 namespace: open-cluster-management-agent
