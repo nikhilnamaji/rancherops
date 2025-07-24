@@ -1,0 +1,21 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: klusterlet
+  namespace: open-cluster-management-agent
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: klusterlet
+      sourceRef:
+        kind: HelmRepository
+        name: ocm
+        namespace: flux-system
+  values:
+    registration:
+      image:
+        repository: quay.io/open-cluster-management/registration
+    work:
+      image:
+        repository: quay.io/open-cluster-management/work
